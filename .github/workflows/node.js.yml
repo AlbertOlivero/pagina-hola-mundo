@@ -1,0 +1,28 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - main  # Cambia a la rama que desees, como 'main' o 'master'
+  pull_request:
+    branches:
+      - main  # Cambia a la rama que desees, como 'main' o 'master'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'  # Usa la versión de Node.js que prefieras
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm test
